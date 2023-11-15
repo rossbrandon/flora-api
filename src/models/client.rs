@@ -1,8 +1,10 @@
 use serde::{Deserialize, Serialize};
 use strum_macros::Display;
+use mongodb::bson::oid::ObjectId;
 
 #[derive(Serialize, Deserialize)]
 pub struct Client {
+    pub _id: ObjectId,
     pub id: String,
     pub name: String,
     pub client_type: ClientType,
