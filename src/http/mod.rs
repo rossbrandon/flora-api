@@ -2,23 +2,19 @@ mod ping;
 mod clients;
 
 use std::net::{Ipv4Addr, SocketAddr};
-use std::sync::Arc;
 use anyhow::Context;
 use axum::Router;
 use mongodb::{Database};
 use tower_http::cors::{Any, CorsLayer};
 use tower_http::trace::TraceLayer;
-use crate::config::Config;
 
 #[derive(Clone)]
-pub(crate) struct ApiContext {
-    config: Arc<Config>,
+pub struct ApiContext {
     db: Database,
 }
 
-pub async fn serve(config: Config, db: Database) -> anyhow::Result<()> {
+pub async fn serve(db: Database) -> anyhow::Result<()> {
     let context = ApiContext {
-        config: Arc::new(config),
         db
     };
 
@@ -36,9 +32,10 @@ pub async fn serve(config: Config, db: Database) -> anyhow::Result<()> {
 fn api_router(context: ApiContext) -> Router {
     let cors = CorsLayer::new().allow_origin(Any);
     Router::new()
-        .with_state(context)
         .merge(ping::router())
         .merge(clients::router())
+        // .route("/api/v1/clients", get(clients::get_clients))
         .layer(TraceLayer::new_for_http())
         .layer(cors)
+        .with_state(context)
 }

@@ -12,7 +12,7 @@ async fn main() -> anyhow::Result<()> {
     let config = Config::parse();
 
     let db = db::connect(&config.mongodb_uri, &config.db_name).await?;
-    http::serve(config, db).await?;
+    http::serve(db).await?;
 
     Ok(())
 }

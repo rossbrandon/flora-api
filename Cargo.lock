@@ -490,12 +490,10 @@ dependencies = [
  "clap",
  "dotenv",
  "futures",
- "log",
  "mongodb",
  "serde",
  "serde_json",
  "strum_macros",
- "thiserror",
  "tokio",
  "tower-http",
 ]
