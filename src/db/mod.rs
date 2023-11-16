@@ -1,4 +1,6 @@
 pub mod clients;
+pub mod errors;
+pub mod flows;
 
 use mongodb::options::{ClientOptions, ResolverConfig};
 use mongodb::{Client, Database};

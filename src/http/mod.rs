@@ -1,4 +1,6 @@
 mod clients;
+mod errors;
+mod flows;
 mod ping;
 
 use anyhow::Context;
@@ -32,6 +34,8 @@ fn api_router(context: ApiContext) -> Router {
     Router::new()
         .merge(ping::router())
         .merge(clients::router())
+        .merge(flows::router())
+        .merge(errors::router())
         .layer(TraceLayer::new_for_http())
         .layer(cors)
         .with_state(context)

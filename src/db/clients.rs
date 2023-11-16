@@ -4,8 +4,10 @@ use futures::TryStreamExt;
 use mongodb::options::FindOptions;
 use mongodb::Database;
 
+const COLLECTION_NAME: &str = "clients";
+
 pub async fn get_all_clients(db: &Database) -> mongodb::error::Result<Vec<Client>> {
-    let collection = db.collection::<Client>("clients");
+    let collection = db.collection::<Client>(COLLECTION_NAME);
     let options = FindOptions::default();
     let mut cursor = collection.find(None, options).await?;
     let mut clients: Vec<Client> = Vec::new();
