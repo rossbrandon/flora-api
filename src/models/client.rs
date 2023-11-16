@@ -9,14 +9,14 @@ pub struct Client {
     pub client_type: ClientType,
     pub description: String,
     pub device_type: DeviceType,
-    pub user_agent: String
+    pub user_agent: String,
 }
 
 #[derive(Serialize, Deserialize, Display)]
 pub enum ClientType {
     Unknown,
     Internal,
-    External
+    External,
 }
 
 #[derive(Serialize, Deserialize, Display)]
@@ -25,5 +25,5 @@ pub enum DeviceType {
     System,
     Web,
     Mobile,
-    Desktop
+    Desktop,
 }

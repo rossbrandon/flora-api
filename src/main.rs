@@ -1,10 +1,10 @@
-mod models;
-mod http;
-mod db;
 mod config;
+mod db;
+mod http;
+mod models;
 
-use clap::Parser;
 use crate::config::Config;
+use clap::Parser;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {

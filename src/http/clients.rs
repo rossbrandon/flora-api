@@ -1,10 +1,10 @@
-use axum::{Json, Router};
-use axum::extract::{Path, State};
-use axum::response::IntoResponse;
-use axum::routing::get;
-use axum::http::StatusCode;
 use crate::db::clients::{get_all_clients, get_client_by_id};
 use crate::http::ApiContext;
+use axum::extract::{Path, State};
+use axum::http::StatusCode;
+use axum::response::IntoResponse;
+use axum::routing::get;
+use axum::{Json, Router};
 
 pub(crate) fn router() -> Router<ApiContext> {
     Router::new()
@@ -13,7 +13,9 @@ pub(crate) fn router() -> Router<ApiContext> {
 }
 
 async fn all_clients(context: State<ApiContext>) -> impl IntoResponse {
-    let clients = get_all_clients(&context.db).await.expect("clients could not be retrieved");
+    let clients = get_all_clients(&context.db)
+        .await
+        .expect("clients could not be retrieved");
     (StatusCode::OK, Json(clients))
 }
 

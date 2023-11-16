@@ -1,10 +1,10 @@
-mod ping;
 mod clients;
+mod ping;
 
-use std::net::{Ipv4Addr, SocketAddr};
 use anyhow::Context;
 use axum::Router;
-use mongodb::{Database};
+use mongodb::Database;
+use std::net::{Ipv4Addr, SocketAddr};
 use tower_http::cors::{Any, CorsLayer};
 use tower_http::trace::TraceLayer;
 
@@ -14,9 +14,7 @@ pub struct ApiContext {
 }
 
 pub async fn serve(db: Database) -> anyhow::Result<()> {
-    let context = ApiContext {
-        db
-    };
+    let context = ApiContext { db };
 
     let app = api_router(context);
 
