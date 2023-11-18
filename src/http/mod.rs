@@ -21,7 +21,7 @@ pub async fn serve(db: Database) -> anyhow::Result<()> {
     let app = api_router(context);
 
     let addr = SocketAddr::from((Ipv4Addr::UNSPECIFIED, 8080));
-    println!("server listening on {}", addr);
+    tracing::debug!("http server listening on {}", addr);
 
     axum::Server::bind(&addr)
         .serve(app.into_make_service())
