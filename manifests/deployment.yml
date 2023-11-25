@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: floraapi 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: floraapi
+  template:
+    metadata:
+      labels:
+        app: floraapi 
+    spec:
+      containers:
+        - name: floraapi 
+          image: datafloracontainerregistry.azurecr.io/floraapi
+          ports:
+          - containerPort: 8080
