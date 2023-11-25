@@ -79,9 +79,9 @@ stages:
                 $(imagePullSecret)
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
-              env:
-                MONGODB_URI: $(mongodb.uri)
-                DB_NAME: $(db.name)
+            env:
+              MONGODB_URI: $(mongodb.uri)
+              DB_NAME: $(db.name)
 
   - deployment: DeployPullRequest
     displayName: Deploy Pull request
@@ -123,9 +123,9 @@ stages:
                 $(imagePullSecret)
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
-              env:
-                MONGODB_URI: $(mongodb.uri)
-                DB_NAME: $(db.name)
+            env:
+              MONGODB_URI: $(mongodb.uri)
+              DB_NAME: $(db.name)
 
           - task: Kubernetes@1
             name: get
