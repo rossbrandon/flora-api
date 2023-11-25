@@ -17,3 +17,8 @@ spec:
           image: datafloracontainerregistry.azurecr.io/floraapi
           ports:
           - containerPort: 8080
+          env:
+            - name: MONGODB_URI
+              value: $(mongodb.uri)
+            - name: DB_NAME
+              value: $(db.name)
