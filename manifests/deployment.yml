@@ -19,6 +19,6 @@ spec:
           - containerPort: 8080
           env:
             - name: MONGODB_URI
-              value: $(mongodb.uri)
+              value: $(MONGODB_URI)
             - name: DB_NAME
-              value: $(db.name)
+              value: $(DB_NAME)
