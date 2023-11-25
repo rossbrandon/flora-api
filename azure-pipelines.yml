@@ -80,8 +80,8 @@ stages:
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
               env:
-                MONGODB_URI: $(MONGODB_URI)
-                DB_NAME: $(DB_NAME)
+                MONGODB_URI: $(mongodb.uri)
+                DB_NAME: $(db.name)
 
   - deployment: DeployPullRequest
     displayName: Deploy Pull request
@@ -124,8 +124,8 @@ stages:
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
               env:
-                MONGODB_URI: $(MONGODB_URI)
-                DB_NAME: $(DB_NAME)
+                MONGODB_URI: $(mongodb.uri)
+                DB_NAME: $(db.name)
 
           - task: Kubernetes@1
             name: get
