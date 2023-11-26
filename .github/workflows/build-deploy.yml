@@ -77,7 +77,7 @@ jobs:
             }' \
             --public-endpoint '{
               "containerName": "flora-api",
-              "containerPort": 8080,
+              "containerPort": 80,
               "healthCheck": {
                 "path": "/ping",
                 "intervalSeconds": 10
