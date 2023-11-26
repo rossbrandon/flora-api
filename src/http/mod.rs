@@ -1,23 +1,17 @@
 mod clients;
 mod errors;
 mod flows;
+mod metrics;
 mod ping;
 
+use crate::AppContext;
 use anyhow::Context;
 use axum::Router;
-use mongodb::Database;
 use std::net::{Ipv4Addr, SocketAddr};
 use tower_http::cors::{Any, CorsLayer};
 use tower_http::trace::TraceLayer;
 
-#[derive(Clone)]
-pub struct ApiContext {
-    db: Database,
-}
-
-pub async fn serve(db: Database) -> anyhow::Result<()> {
-    let context = ApiContext { db };
-
+pub async fn serve(context: AppContext) -> anyhow::Result<()> {
     let app = api_router(context);
 
     let addr = SocketAddr::from((Ipv4Addr::UNSPECIFIED, 8080));
@@ -29,9 +23,10 @@ pub async fn serve(db: Database) -> anyhow::Result<()> {
         .context("error starting http server")
 }
 
-fn api_router(context: ApiContext) -> Router {
+fn api_router(context: AppContext) -> Router {
     let cors = CorsLayer::new().allow_origin(Any);
     Router::new()
+        .merge(metrics::router())
         .merge(ping::router())
         .merge(clients::router())
         .merge(flows::router())
