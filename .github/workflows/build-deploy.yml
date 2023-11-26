@@ -75,3 +75,11 @@ jobs:
                 }
               }
             }'
+            --public-endpoint '{
+              "containerName": "flora-api",
+              "containerPort": 8080,
+              "healthCheck": {
+                "path": "/ping",
+                "intervalSeconds": 10
+              }
+            }'
