@@ -74,7 +74,7 @@ jobs:
                   "443": "HTTPS"
                 }
               }
-            }'
+            }' \
             --public-endpoint '{
               "containerName": "flora-api",
               "containerPort": 8080,
