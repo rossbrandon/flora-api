@@ -27,7 +27,7 @@ async fn main() -> anyhow::Result<()> {
     dotenv::dotenv().ok();
     let config = Config::parse();
 
-    init_tracing_subscriber(config.loki_url);
+    init_tracing_subscriber(&config.loki_url, &config.environment);
     let (registry, meter) = init_prometheus();
 
     let db = db::connect(&config.mongodb_uri, &config.db_name).await?;
@@ -41,10 +41,14 @@ async fn main() -> anyhow::Result<()> {
     Ok(())
 }
 
-fn init_tracing_subscriber(loki_url: String) {
+fn init_tracing_subscriber(loki_url: &str, environment: &str) {
     let (loki_layer, loki_task) = tracing_loki::builder()
-        .label("service_name", SERVICE_NAME).unwrap()
-        .build_url(Url::parse(&loki_url).unwrap()).unwrap();
+        .label("service_name", SERVICE_NAME)
+        .unwrap()
+        .label("env", environment)
+        .unwrap()
+        .build_url(Url::parse(loki_url).unwrap())
+        .unwrap();
 
     tracing_subscriber::registry()
         .with(
@@ -69,7 +73,8 @@ fn init_prometheus() -> (Registry, Meter) {
     let registry = Registry::new();
     let exporter = opentelemetry_prometheus::exporter()
         .with_registry(registry.clone())
-        .build().unwrap();
+        .build()
+        .unwrap();
     let provider = MeterProvider::builder().with_reader(exporter).build();
     let meter = provider.meter(SERVICE_NAME);
     (registry, meter)
