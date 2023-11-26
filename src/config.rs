@@ -5,4 +5,7 @@ pub struct Config {
 
     #[clap(long, env)]
     pub db_name: String,
+
+    #[clap(long, env)]
+    pub loki_url: String,
 }
