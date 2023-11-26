@@ -62,7 +62,6 @@ jobs:
           echo "Releasing to Amazon Lightsail..."
           aws lightsail create-container-service-deployment \
             --service-name flora-api \
-            --scale 1 \
             --containers '[
               {
                 "name": "flora-api",
@@ -72,7 +71,8 @@ jobs:
                   {"name": "DB_NAME", "value": "${{ secrets.DB_NAME }}"}
                 ],
                 "ports": {
-                  "80": "HTTP"
+                  "80": "HTTP",
+                  "443": "HTTPS"
                 }
               }
             ]'
