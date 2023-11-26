@@ -62,9 +62,8 @@ jobs:
           echo "Releasing to Amazon Lightsail..."
           aws lightsail create-container-service-deployment \
             --service-name flora-api \
-            --containers '[
-              {
-                "name": "flora-api",
+            --containers '{
+              "flora-api": {
                 "image": "rosstafarian/flora-api:latest",
                 "environment": [
                   {"name": "MONGODB_URI", "value": "${{ secrets.MONGODB_URI }}"},
@@ -75,4 +74,4 @@ jobs:
                   "443": "HTTPS"
                 }
               }
-            ]'
+            }'
