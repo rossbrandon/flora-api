@@ -66,8 +66,8 @@ jobs:
               "flora-api": {
                 "image": "rosstafarian/flora-api:latest",
                 "environment": [
-                  {"name": "MONGODB_URI", "value": "${{ secrets.MONGODB_URI }}"},
-                  {"name": "DB_NAME", "value": "${{ secrets.DB_NAME }}"}
+                  "MONGODB_URI": "${{ secrets.MONGODB_URI }}",
+                  "DB_NAME": "${{ secrets.DB_NAME }}"
                 ],
                 "ports": {
                   "80": "HTTP",
