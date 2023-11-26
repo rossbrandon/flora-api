@@ -70,14 +70,13 @@ jobs:
                   "DB_NAME": "${{ secrets.DB_NAME }}"
                 },
                 "ports": {
-                  "80": "HTTP",
-                  "443": "HTTPS"
+                  "8080": "HTTP"
                 }
               }
             }' \
             --public-endpoint '{
               "containerName": "flora-api",
-              "containerPort": 80,
+              "containerPort": 8080,
               "healthCheck": {
                 "path": "/ping",
                 "intervalSeconds": 10
