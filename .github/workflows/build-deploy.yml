@@ -79,6 +79,6 @@ jobs:
               "containerPort": 8080,
               "healthCheck": {
                 "path": "/ping",
-                "intervalSeconds": 10
+                "intervalSeconds": 300
               }
             }'
