@@ -9,8 +9,8 @@ use opentelemetry::KeyValue;
 
 pub(crate) fn router() -> Router<AppContext> {
     Router::new()
-        .route("/api/v1/clients", get(all_clients))
-        .route("/api/v1/clients/:client_id", get(client_by_id))
+        .route("/clients", get(all_clients))
+        .route("/clients/:client_id", get(client_by_id))
 }
 
 async fn all_clients(context: State<AppContext>) -> impl IntoResponse {

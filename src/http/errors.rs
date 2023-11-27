@@ -9,7 +9,7 @@ use opentelemetry::KeyValue;
 
 pub(crate) fn router() -> Router<AppContext> {
     Router::new().route(
-        "/api/v1/errors/upstreams/:upstream_id/downstreams/:downstream_id",
+        "/errors/upstreams/:upstream_id/downstreams/:downstream_id",
         get(errors_by_upstream_id_downstream_id),
     )
 }

@@ -9,9 +9,9 @@ use opentelemetry::KeyValue;
 
 pub(crate) fn router() -> Router<AppContext> {
     Router::new()
-        .route("/api/v1/clients/:client_id/flows", get(all_client_flows))
+        .route("/clients/:client_id/flows", get(all_client_flows))
         .route(
-            "/api/v1/clients/:client_id/flows/:upstream_id",
+            "/clients/:client_id/flows/:upstream_id",
             get(client_flows_by_upstream_id),
         )
 }

@@ -70,7 +70,7 @@ jobs:
                   "MONGODB_URI": "${{ secrets.MONGODB_URI }}",
                   "DB_NAME": "${{ secrets.DB_NAME }}",
                   "LOKI_URL": "${{ secrets.LOKI_URL }}",
-                  "METRICS_TOKEN": "${{ secrets.METRICS_TOKEN }}"
+                  "API_TOKEN": "${{ secrets.API_TOKEN }}"
                 },
                 "ports": {
                   "8080": "HTTP"
