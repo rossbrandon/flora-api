@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0.75"
-axum = "0.6.20"
+axum = { version = "0.6.20", features = ["headers"] }
 bson = "2.7.0"
 clap = { version = "4.4.8", features = ["derive", "env"] }
 dotenv = "0.15.0"

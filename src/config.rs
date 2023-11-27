@@ -11,4 +11,7 @@ pub struct Config {
 
     #[clap(long, env)]
     pub loki_url: String,
+
+    #[clap(long, env)]
+    pub metrics_token: String,
 }

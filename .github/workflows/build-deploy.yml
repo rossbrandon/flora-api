@@ -69,7 +69,8 @@ jobs:
                   "ENVIRONMENT": "${{ secrets.ENVIRONMENT }}",
                   "MONGODB_URI": "${{ secrets.MONGODB_URI }}",
                   "DB_NAME": "${{ secrets.DB_NAME }}",
-                  "LOKI_URL": "${{ secrets.LOKI_URL }}"
+                  "LOKI_URL": "${{ secrets.LOKI_URL }}",
+                  "METRICS_TOKEN": "${{ secrets.METRICS_TOKEN }}"
                 },
                 "ports": {
                   "8080": "HTTP"
