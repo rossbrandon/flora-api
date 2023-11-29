@@ -4,8 +4,8 @@
 
 Basic REST API to support the Data Flora concept.
 
-For more context about this concept, see my blog post on my portfolio site: 
-[Designing Data Systems With Visibility & Management at the Forefront](https://rossbrandon.dev/posts/designing-data-systems-with-visibility/)
+For more context about this concept, see my blog post on my portfolio site:
+[Designing Data Systems for Visibility & Management](https://rossbrandon.dev/posts/designing-data-systems-with-visibility/)
 
 UI Repo: [flora-dash](https://github.com/rossbrandon/flora-dash)
 
@@ -84,7 +84,7 @@ for deployment on a Kubernetes cluster, if desired.
 
 Request: `GET http://localhost:8080/ping`
 
-Response: 
+Response:
 
 ```bash
 pong
