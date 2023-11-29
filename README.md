@@ -5,7 +5,7 @@
 Basic REST API to support the Data Flora concept.
 
 For more context about this concept, see my blog post on my portfolio site:
-[Designing Data Systems for Visibility & Management](https://rossbrandon.dev/posts/designing-data-systems-with-visibility/)
+[Designing Data Systems for Visibility & Management](https://rossbrandon.dev/posts/designing-data-systems-for-visibility/)
 
 UI Repo: [flora-dash](https://github.com/rossbrandon/flora-dash)
 
